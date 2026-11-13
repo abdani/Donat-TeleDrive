@@ -13,6 +13,7 @@
   <img alt="Compose Multiplatform" src="https://img.shields.io/badge/Compose-Multiplatform-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white">
   <img alt="TDLib" src="https://img.shields.io/badge/Telegram-TDLib-26A5E4?style=for-the-badge&logo=telegram&logoColor=white">
   <img alt="MIT License" src="https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge">
+  <img alt="Linux coming soon" src="https://img.shields.io/badge/Linux-coming%20soon-FCC624?style=for-the-badge&logo=linux&logoColor=black">
 </p>
 
 <p align="center">
@@ -176,6 +177,8 @@ flowchart LR
 
 SHA-256 checksums are on the release page. The files aren't code-signed yet: if SmartScreen appears, choose **More info → Run anyway**.
 
+> 🐧 **Linux is on the way.** A Linux version (`.deb` and AppImage) is planned for a coming release. Click **Watch → Custom → Releases** at the top of this page to be notified when it lands.
+
 **First start:** create an app at [my.telegram.org](https://my.telegram.org) → *API development tools*, paste the API ID and hash, then sign in with the QR code (Telegram on your phone → Settings → Devices → Link Desktop Device) or your phone number.
 
 ## 🛠️ Build from source
@@ -245,6 +248,7 @@ Yes — the drive is a normal private channel in your Telegram app, showing just
 
 ## 🗺️ Roadmap
 
+- [ ] **Linux version** (`.deb` and AppImage) — next up
 - [ ] End-to-end encryption with a recovery passphrase
 - [ ] Automatic backup of Windows folders
 - [ ] Windows Hello unlock
