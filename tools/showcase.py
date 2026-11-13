@@ -135,8 +135,28 @@ def collage(names, labels, out_name, cols=2, cell_w=760, gap=40, pad=60):
     save(c, out_name)
 
 
+def social():
+    """1280×640 card (GitHub profile / social preview), same layout as Donat Downloader's: name left, app window right."""
+    W, H = 1280, 640
+    c = gradient(W, H)
+    d = ImageDraw.Draw(c)
+    logo = Image.open("docs/images/logo.png").convert("RGBA")
+    logo = logo.crop(logo.getchannel("A").getbbox())
+    logo = logo.resize((190, round(190 * logo.height / logo.width)), Image.LANCZOS)
+    c.alpha_composite(logo, (70, 165))
+    title = font("segoeuib.ttf", 66)
+    d.text((72, 300), "Donat", font=title, fill=(255, 255, 255))
+    d.text((72, 372), "TeleDrive", font=title, fill=(255, 255, 255))
+    d.text((74, 470), "Your private cloud on Telegram", font=font("segoeuil.ttf", 26), fill=(214, 214, 236))
+    d.text((74, 508), "installer  ·  zip  ·  portable  ·  open source", font=font("segoeuil.ttf", 21), fill=(160, 160, 190))
+    win = window("home.png", 0.62)
+    place(c, win, 590, 88, blur=24, drop=16, opacity=170)  # runs off the right edge, like the Downloader card
+    save(c, "social-preview.png")
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
+    social()
     hero()
     for raw, out in [("gallery.png", "gallery.png"), ("preview.png", "preview.png"), ("transfers.png", "transfers.png"),
                      ("insights.png", "insights.png"), ("files.png", "files-details.png"), ("settings.png", "settings.png"),
