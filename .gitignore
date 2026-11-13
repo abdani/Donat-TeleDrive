@@ -1,0 +1,21 @@
+# Gradle / Kotlin build output (also holds the unit tests' app data: build/test-appdata)
+.gradle/
+.kotlin/
+build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Output of the scripts in tools/
+tools/*.png
+tools/mutation-results.txt
+
+# Private planning documents (kept out of the repository)
+Private_*.docx
+Private_*.pptx
+
+# Personal notes
+CLAUDE.local.md
