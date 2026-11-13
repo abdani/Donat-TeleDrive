@@ -20,7 +20,7 @@
   <a href="#-a-tour">Tour</a> ·
   <a href="#-security--privacy">Security</a> ·
   <a href="#-under-the-hood">Under the hood</a> ·
-  <a href="#-getting-started">Getting started</a> ·
+  <a href="#download">Download</a> ·
   <a href="#-faq">FAQ</a>
 </p>
 
@@ -162,7 +162,23 @@ flowchart LR
 
 ---
 
-## 🚀 Getting started
+<a id="download"></a>
+
+## ⬇️ Download
+
+<p align="center"><a href="https://abdani.github.io/Donat-TeleDrive/"><b>Homepage</b></a> · <a href="../../releases/latest"><b>Latest release</b></a> · Windows 10 / 11 (64-bit) · Java included</p>
+
+| | Package | Best for |
+| --- | --- | --- |
+| 🧩 **Installer** (recommended) | [`Donat-TeleDrive-Setup.msi`](../../releases/latest/download/Donat-TeleDrive-Setup.msi) · 139 MB | Start menu & desktop shortcuts, per-user install (no admin), clean uninstall. Data in `%LOCALAPPDATA%\Donat TeleDrive`. |
+| 🗂️ **ZIP** | [`Donat-TeleDrive-Windows.zip`](../../releases/latest/download/Donat-TeleDrive-Windows.zip) · 137 MB | Unzip anywhere and run `Donat TeleDrive.exe` — nothing installed. Data in `%LOCALAPPDATA%\Donat TeleDrive`. |
+| 🔌 **Portable** | [`Donat-TeleDrive-Portable.zip`](../../releases/latest/download/Donat-TeleDrive-Portable.zip) · 137 MB | USB stick: everything lives in the `data` folder next to the exe and nothing is left on the PC. Keep it safe — it holds a signed-in session. |
+
+SHA-256 checksums are on the release page. The files aren't code-signed yet: if SmartScreen appears, choose **More info → Run anyway**.
+
+**First start:** create an app at [my.telegram.org](https://my.telegram.org) → *API development tools*, paste the API ID and hash, then sign in with the QR code (Telegram on your phone → Settings → Devices → Link Desktop Device) or your phone number.
+
+## 🛠️ Build from source
 
 **You need**
 - Windows 10 or 11 (x64)
@@ -177,10 +193,12 @@ run.bat
 ```
 `run.bat` builds the app (the first build takes a few minutes) and starts it. Enter your API ID and hash, then sign in with a QR code or your phone number. Create a drive — or, if you have used Donat TeleDrive before, your drives appear automatically.
 
-**Tests**
+**Tests and packages**
 ```bat
 gradlew.bat jvmTest
+gradlew.bat createDistributable packageMsi
 ```
+The app folder lands in `build/compose/binaries/main/app`, the installer in `build/compose/binaries/main/msi`. A `data` folder next to `Donat TeleDrive.exe` switches that copy to portable mode.
 Unit tests run in their own data folder (`build/test-appdata`) and never touch your real data or your Telegram account.
 
 <details>

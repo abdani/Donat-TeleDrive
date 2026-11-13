@@ -94,10 +94,19 @@ compose.desktop {
             targetFormats(TargetFormat.Msi)
             modules("java.instrument", "jdk.httpserver", "jdk.jfr", "jdk.unsupported", "jdk.unsupported.desktop") // from suggestRuntimeModules
             packageName = "Donat TeleDrive"
-            packageVersion = "0.1.0"
+            packageVersion = "1.0.0" // keep in step with APP_VERSION (Main.kt)
+            description = "Donat TeleDrive"
+            vendor = "Dani Abdani"
+            copyright = "© 2026 Dani Abdani. MIT License."
             windows {
                 menuGroup = "Donat TeleDrive"
                 perUserInstall = true
+                // Program files: %LOCALAPPDATA%\Donat TeleDrive App (the default, %LOCALAPPDATA%\Donat TeleDrive, is the data folder).
+                // One level only: a nested path in the user profile fails WiX validation (ICE64), and "\" gets eaten anyway.
+                installationPath = "Donat TeleDrive App"
+                shortcut = true
+                menu = true
+                iconFile.set(project.file("packaging/icon.ico")) // made by tools/logo.py
                 upgradeUuid = "6f1d3c52-4b8e-4f3a-9a57-2d0c9e8b1a44"
             }
         }

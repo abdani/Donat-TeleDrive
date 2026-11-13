@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donat TeleDrive – your own private cloud drive, powered by Telegram</title>
+<meta name="description" content="Donat TeleDrive is a beautiful, recovery-first cloud drive for Windows that keeps your files in your own private Telegram channel. Installer, zip or portable — free and open source.">
+<meta name="author" content="Dani Abdani">
+<link rel="canonical" href="https://abdani.github.io/Donat-TeleDrive/">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Donat TeleDrive – your own private cloud drive">
+<meta property="og:description" content="A premium file manager for Windows whose storage is your own private Telegram channel. Recovery-first, SHA-256 verified, 11 themes.">
+<meta property="og:url" content="https://abdani.github.io/Donat-TeleDrive/">
+<meta property="og:image" content="https://abdani.github.io/Donat-TeleDrive/images/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "SoftwareApplication",
+ "name": "Donat TeleDrive", "softwareVersion": "1.0.0", "operatingSystem": "Windows 10, Windows 11",
+ "applicationCategory": "UtilitiesApplication",
+ "description": "Personal cloud drive for Windows that stores files in your own private Telegram channel.",
+ "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+ "downloadUrl": "https://github.com/abdani/Donat-TeleDrive/releases/latest/download/Donat-TeleDrive-Setup.msi",
+ "image": "https://abdani.github.io/Donat-TeleDrive/images/hero.png",
+ "screenshot": "https://abdani.github.io/Donat-TeleDrive/images/gallery.png",
+ "author": {"@type": "Person", "name": "Dani Abdani", "url": "https://github.com/abdani"},
+ "license": "https://opensource.org/licenses/MIT"}
+</script>
+<style>
+  :root {
+    --bg: #0b0d1c; --bg2: #120f2b; --surface: rgba(255,255,255,.045); --line: rgba(255,255,255,.10);
+    --text: #f1f1f8; --muted: #a9abc6; --blue: #2196f3; --violet: #8a2be2; --grad: linear-gradient(135deg, #2196f3, #8a2be2);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; color: var(--text); background: radial-gradient(1200px 700px at 10% -10%, rgba(33,150,243,.28), transparent 60%),
+         radial-gradient(1000px 700px at 100% 30%, rgba(138,43,226,.25), transparent 60%), linear-gradient(180deg, var(--bg2), var(--bg) 40%);
+         font: 16px/1.65 "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif; }
+  a { color: #8cc8ff; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  nav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px); background: rgba(11,13,28,.6); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; gap: 22px; height: 60px; }
+  nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text); text-decoration: none; margin-right: auto; }
+  nav .brand img { height: 26px; }
+  nav a.link { color: var(--muted); text-decoration: none; font-weight: 600; font-size: .95rem; }
+  nav a.link:hover { color: var(--text); }
+  header { text-align: center; padding: 72px 0 24px; }
+  header .logo { height: 96px; }
+  h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.05; margin: 18px 0 14px; letter-spacing: -.03em; }
+  h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { font-size: 1.22rem; color: var(--muted); max-width: 680px; margin: 0 auto 26px; }
+  .chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+  .chips span { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 14px; font-size: .9rem; font-weight: 600; }
+  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; font-weight: 700; text-decoration: none;
+         border: 1px solid var(--line); color: var(--text); background: var(--surface); transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--grad); border-color: transparent; box-shadow: 0 10px 30px rgba(110,80,240,.45); color: #fff; }
+  .note { color: var(--muted); font-size: .88rem; margin-top: 14px; }
+  .hero-shot { display: block; width: 100%; margin: 40px auto 0; border-radius: 18px; box-shadow: 0 40px 100px rgba(0,0,0,.55); }
+  section { padding: 76px 0; }
+  h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); margin: 0 0 10px; text-align: center; letter-spacing: -.02em; }
+  .sub { color: var(--muted); text-align: center; margin: 0 auto 38px; max-width: 680px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+  .card .ico { font-size: 1.7rem; }
+  .card h3 { margin: 8px 0 6px; font-size: 1.1rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .96rem; }
+  .downloads { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .dl { position: relative; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 26px; }
+  .dl.best { border-color: transparent; background: linear-gradient(var(--bg2), var(--bg2)) padding-box, var(--grad) border-box; border: 1.5px solid transparent; }
+  .dl .tag { position: absolute; top: -12px; left: 24px; background: var(--grad); color: #fff; font-size: .75rem; font-weight: 800; letter-spacing: .06em;
+             text-transform: uppercase; padding: 4px 12px; border-radius: 999px; }
+  .dl h3 { margin: 0 0 4px; font-size: 1.3rem; }
+  .dl .file { color: var(--muted); font-size: .88rem; font-family: ui-monospace, Consolas, monospace; margin-bottom: 14px; }
+  .dl ul { margin: 0 0 22px; padding-left: 18px; color: var(--muted); flex: 1; }
+  .dl li { margin: 4px 0; }
+  .dl .btn { justify-content: center; }
+  .feature { display: grid; grid-template-columns: 1fr 1.5fr; gap: 36px; align-items: center; margin-bottom: 70px; }
+  .feature.flip { grid-template-columns: 1.5fr 1fr; }
+  .feature.flip .text { order: 2; }
+  .feature h3 { font-size: 1.6rem; margin: 0 0 10px; letter-spacing: -.01em; }
+  .feature p { color: var(--muted); margin: 0 0 10px; }
+  .feature img, .wide { width: 100%; border-radius: 14px; display: block; }
+  .kicker { color: #b9a4ff; font-weight: 800; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
+  table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; }
+  tr:last-child td { border-bottom: 0; }
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; margin-bottom: 12px; }
+  summary { cursor: pointer; font-weight: 700; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+  code { background: rgba(255,255,255,.08); padding: 1px 6px; border-radius: 6px; font-size: .9em; }
+  footer { border-top: 1px solid var(--line); padding: 30px 0 46px; color: var(--muted); font-size: .9rem; text-align: center; }
+  @media (max-width: 820px) { .feature, .feature.flip { grid-template-columns: 1fr; } .feature.flip .text { order: 0; } nav a.link { display: none; } }
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#"><img src="images/logo.png" alt="">Donat TeleDrive</a>
+  <a class="link" href="#features">Features</a>
+  <a class="link" href="#tour">Tour</a>
+  <a class="link" href="#download">Download</a>
+  <a class="link" href="#faq">FAQ</a>
+  <a class="link" href="https://github.com/abdani/Donat-TeleDrive">GitHub</a>
+</div></nav>
+
+<header class="wrap">
+  <img class="logo" src="images/logo.png" alt="Donat TeleDrive logo">
+  <h1>Your private cloud,<br><span>powered by Telegram.</span></h1>
+  <p class="lead">Donat TeleDrive is a beautiful, recovery-first cloud drive for Windows. Your files live in your own private
+    Telegram channel — it looks and feels like a premium file manager.</p>
+  <div class="chips"><span>☁️ Storage you own</span><span>🛡️ Recovery-first</span><span>✅ SHA-256 verified</span><span>🎨 11 themes</span></div>
+  <div class="cta">
+    <a class="btn primary" href="#download">⬇ Download for Windows</a>
+    <a class="btn" href="https://github.com/abdani/Donat-TeleDrive">View on GitHub</a>
+  </div>
+  <p class="note">Version 1.0.0 · Windows 10 / 11 (64-bit) · Free &amp; open source (MIT)</p>
+  <img class="hero-shot" src="images/hero.png" alt="Donat TeleDrive home screen with storage overview, folders and photo thumbnails">
+</header>
+
+<section id="features" class="wrap">
+  <h2>Everything a cloud drive should be</h2>
+  <p class="sub">No subscription, no third-party server — just your Telegram account and a file manager that takes your files seriously.</p>
+  <div class="grid">
+    <div class="card"><div class="ico">☁️</div><h3>Storage you own</h3><p>Files go to a private channel in your own Telegram account — no extra cloud account, no plan to outgrow.</p></div>
+    <div class="card"><div class="ico">🛡️</div><h3>Recovery-first</h3><p>The drive's index lives in Telegram too. A new PC is one login away from every folder, name and version.</p></div>
+    <div class="card"><div class="ico">✅</div><h3>Verified, never "maybe"</h3><p>SHA-256 per part and per file. "Saved" only when the cloud index lists it, "Verified" after a byte-for-byte check.</p></div>
+    <div class="card"><div class="ico">🚀</div><h3>Transfers that don't quit</h3><p>Parallel, resumable, survive restarts, respect Telegram's rate limits, split big files into 512 MiB parts.</p></div>
+    <div class="card"><div class="ico">🎬</div><h3>Preview everything</h3><p>Photos with smooth zoom, PDF, text, ZIP, audio and video — MKV, HEVC and FLAC too — plus a mini music player.</p></div>
+    <div class="card"><div class="ico">🔒</div><h3>Private by design</h3><p>DPAPI-encrypted credentials, optional PIN, pentested local-network sharing, never a chat client.</p></div>
+  </div>
+</section>
+
+<section id="tour" class="wrap">
+  <h2>Take the tour</h2>
+  <p class="sub">Every screen is designed in the Android 16 / Material 3 style — rounded, calm and fast.</p>
+
+  <div class="feature">
+    <div class="text"><div class="kicker">Gallery</div><h3>A camera roll for your cloud</h3>
+      <p>Photos and videos grouped by the day they were taken, straight from the names your phone and camera already use.</p></div>
+    <img src="images/gallery.png" alt="Gallery grouped by date" loading="lazy">
+  </div>
+  <div class="feature flip">
+    <img src="images/preview.png" alt="Full-window image preview" loading="lazy">
+    <div class="text"><div class="kicker">Preview</div><h3>Instant, in-window preview</h3>
+      <p>Zoom at the cursor, pan by dragging, flip with the arrow keys. Media plays inside the app; exotic formats use an engine fetched on demand.</p></div>
+  </div>
+  <div class="feature">
+    <div class="text"><div class="kicker">Transfers</div><h3>Always know what's happening</h3>
+      <p>Progress from confirmed bytes, live speed and time left, pause / resume / cancel per item or all at once.</p></div>
+    <img src="images/transfers.png" alt="Transfers with live progress" loading="lazy">
+  </div>
+  <div class="feature flip">
+    <img src="images/files-details.png" alt="Details view with search filters" loading="lazy">
+    <div class="text"><div class="kicker">Find</div><h3>Search &amp; details</h3>
+      <p>Sortable details view, search with type, date and size filters, Favorites and Recent, Explorer-style selection and shortcuts.</p></div>
+  </div>
+  <div class="feature">
+    <div class="text"><div class="kicker">Insights</div><h3>Reclaim space</h3>
+      <p>Largest files and folders, and duplicates found by content — keep one copy, trash the rest in one click.</p></div>
+    <img src="images/insights.png" alt="Storage insights" loading="lazy">
+  </div>
+
+  <h2 style="margin-top:20px">Eleven themes, one feel</h2>
+  <p class="sub">System, Daylight, Graphite, Ocean, AMOLED, Sepia, Forest, Sakura, Sunset, Lavender and Neon.</p>
+  <img class="wide" src="images/themes.png" alt="Daylight, Ocean, Sakura and Neon themes" loading="lazy">
+  <div class="grid" style="margin-top:22px">
+    <img class="wide" src="images/phones.png" alt="Phone-width layout" loading="lazy">
+    <img class="wide" src="images/login.png" alt="QR code login" loading="lazy">
+  </div>
+</section>
+
+<section id="download" class="wrap">
+  <h2>Download Donat TeleDrive 1.0.0</h2>
+  <p class="sub">Three ways to run it — pick the one that fits. Java is included; there is nothing else to install.</p>
+  <div class="downloads">
+    <div class="dl best"><div class="tag">Recommended</div>
+      <h3>🧩 Installer</h3><div class="file">Donat-TeleDrive-Setup.msi · 139 MB</div>
+      <ul>
+        <li>Start menu and desktop shortcuts</li>
+        <li>Installs for your user only — no admin rights</li>
+        <li>Clean uninstall from Windows Settings</li>
+        <li>Your drive data stays in <code>%LOCALAPPDATA%</code> across updates</li>
+      </ul>
+      <a class="btn primary" href="https://github.com/abdani/Donat-TeleDrive/releases/latest/download/Donat-TeleDrive-Setup.msi">⬇ Download installer</a>
+    </div>
+    <div class="dl">
+      <h3>🗂️ ZIP (no install)</h3><div class="file">Donat-TeleDrive-Windows.zip · 137 MB</div>
+      <ul>
+        <li>Unzip anywhere and run <code>Donat TeleDrive.exe</code></li>
+        <li>Nothing is installed or registered</li>
+        <li>Data is kept in <code>%LOCALAPPDATA%\Donat TeleDrive</code>, like the installer</li>
+        <li>Good for trying it out</li>
+      </ul>
+      <a class="btn" href="https://github.com/abdani/Donat-TeleDrive/releases/latest/download/Donat-TeleDrive-Windows.zip">⬇ Download ZIP</a>
+    </div>
+    <div class="dl">
+      <h3>🔌 Portable</h3><div class="file">Donat-TeleDrive-Portable.zip · 137 MB</div>
+      <ul>
+        <li>Everything — session, settings, index, cache — lives in the <code>data</code> folder next to the exe</li>
+        <li>Carry it on a USB stick; leaves nothing on the PC</li>
+        <li>On another PC, enter your API ID / hash once more</li>
+        <li>Keep the stick safe and set a PIN: it holds a signed-in session</li>
+      </ul>
+      <a class="btn" href="https://github.com/abdani/Donat-TeleDrive/releases/latest/download/Donat-TeleDrive-Portable.zip">⬇ Download Portable</a>
+    </div>
+  </div>
+  <p class="note" style="text-align:center">SHA-256 checksums are listed on the <a href="https://github.com/abdani/Donat-TeleDrive/releases/latest">release page</a>.
+    The app isn't code-signed yet: if Windows SmartScreen appears, choose <b>More info → Run anyway</b>.</p>
+
+  <h2 style="margin-top:60px">Get running in three steps</h2>
+  <div class="grid" style="margin-top:26px">
+    <div class="card"><div class="ico">①</div><h3>Get your API keys</h3><p>Log in at <a href="https://my.telegram.org">my.telegram.org</a> → <i>API development tools</i> and create an app. Keep the API ID and hash.</p></div>
+    <div class="card"><div class="ico">②</div><h3>Sign in</h3><p>Paste the keys, then scan the QR code with the Telegram app on your phone — or use your phone number.</p></div>
+    <div class="card"><div class="ico">③</div><h3>Create your drive</h3><p>Name it and start dragging files in. Used it before? Your drives appear automatically.</p></div>
+  </div>
+</section>
+
+<section id="faq" class="wrap">
+  <h2>Questions</h2>
+  <p class="sub">&nbsp;</p>
+  <details><summary>Is there a storage limit?</summary><p>Telegram doesn't limit the total size of a channel. Big files are split into 512 MiB parts and joined again when you download them.</p></details>
+  <details><summary>What if I lose my PC?</summary><p>Install Donat TeleDrive anywhere and log in with the same Telegram account: drives, folders and names come back from the index stored in Telegram.</p></details>
+  <details><summary>Are my files encrypted?</summary><p>They're in a private channel only your account can see and travel over Telegram's encrypted connection. End-to-end encryption with your own passphrase is on the roadmap.</p></details>
+  <details><summary>Installer, ZIP or Portable — which one?</summary><p>Most people: the installer. Want to try without installing: the ZIP. Want to carry it on a USB stick with all its data: Portable. All three are the same app.</p></details>
+  <details><summary>Why does Windows warn about an unknown publisher?</summary><p>The files aren't code-signed yet (certificates cost money). The source is open on GitHub and every download has a SHA-256 checksum on the release page.</p></details>
+</section>
+
+<footer>
+  <div class="wrap">
+    Donat TeleDrive is free and open source · <a href="https://github.com/abdani/Donat-TeleDrive">github.com/abdani/Donat-TeleDrive</a><br>
+    © 2026 Dani Abdani · MIT License · Not affiliated with Telegram.
+  </div>
+</footer>
+</body>
+</html>

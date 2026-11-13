@@ -18,5 +18,6 @@ tools/mutation-results.txt
 Private_*.docx
 Private_*.pptx
 
-# Personal notes
+# Local working notes for Claude Code (kept on this PC only)
+CLAUDE.md
 CLAUDE.local.md

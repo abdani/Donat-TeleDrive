@@ -29,5 +29,9 @@ for w in (144, 180, 216, 252, 288):
 # Window / taskbar / tray icons (square).
 for s in (16, 20, 24, 32, 40, 48, 64, 256):
     fit(s, s, 0.01).save(os.path.join(out, f"icon-{s}.png"), optimize=True)
+# Exe / installer / shortcut icon: one .ico holding every size (Windows picks the exact one).
+os.makedirs("packaging", exist_ok=True)
+sizes = (16, 20, 24, 32, 40, 48, 64, 256)
+fit(256, 256, 0.01).save("packaging/icon.ico", sizes=[(s, s) for s in sizes], append_images=[fit(s, s, 0.01) for s in sizes[:-1]])
 total = sum(os.path.getsize(os.path.join(out, f)) for f in os.listdir(out) if f.endswith(".png"))
 print("written; total", total, "bytes")

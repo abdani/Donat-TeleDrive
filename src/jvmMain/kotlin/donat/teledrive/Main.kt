@@ -28,12 +28,18 @@ import kotlinx.coroutines.SupervisorJob
 import java.io.File
 
 const val APP_NAME = "Donat TeleDrive"
+/** Keep in step with `packageVersion` in build.gradle.kts. */
+const val APP_VERSION = "1.0.0"
 
 /**
  * %LOCALAPPDATA%\Donat TeleDrive. The folder of the old name ("DonatTeleDrive") is moved here once, session and all;
  * if it can't be moved (an old build still has it open) it keeps being used, so nothing is ever lost or duplicated.
  */
-val appDataDir: File = resolveAppDataDir(File(System.getenv("LOCALAPPDATA") ?: System.getProperty("user.home"))).apply { mkdirs() }
+val appDataDir: File = (portableDataDir(System.getProperty("jpackage.app-path"))
+    ?: resolveAppDataDir(File(System.getenv("LOCALAPPDATA") ?: System.getProperty("user.home")))).apply { mkdirs() }
+
+/** Portable copy (USB stick): a "data" folder next to Donat TeleDrive.exe holds everything instead of %LOCALAPPDATA%. */
+internal fun portableDataDir(exePath: String?): File? = exePath?.let { File(it).absoluteFile.parentFile?.resolve("data") }?.takeIf { it.isDirectory }
 
 internal fun resolveAppDataDir(base: File): File {
     val dir = File(base, APP_NAME)

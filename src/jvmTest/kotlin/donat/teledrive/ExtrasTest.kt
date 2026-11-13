@@ -31,6 +31,20 @@ class ExtrasTest {
     }
 
     @Test
+    fun portableModeOnlyWithDataFolder() {
+        val dir = java.nio.file.Files.createTempDirectory("dtd-portable").toFile()
+        try {
+            val exe = java.io.File(dir, "Donat TeleDrive.exe").path
+            assertEquals(null, portableDataDir(exe)) // installed / zip without "data": %LOCALAPPDATA%
+            java.io.File(dir, "data").mkdirs()
+            assertEquals(java.io.File(dir, "data").absoluteFile, portableDataDir(exe))
+            assertEquals(null, portableDataDir(null)) // dev run (no exe)
+        } finally {
+            dir.deleteRecursively()
+        }
+    }
+
+    @Test
     fun pinHashing() {
         val (salt, hash) = AppLock.make("2468")
         assertTrue(AppLock.matches("2468", salt, hash))

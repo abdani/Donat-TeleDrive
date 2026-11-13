@@ -90,7 +90,7 @@ class TelegramAccount(private val dataDir: File) {
                 databaseDirectoryPath = dataDir.toPath().resolve("tdlib")
                 downloadedFilesDirectoryPath = dataDir.toPath().resolve("tdlib-files")
                 deviceModel = "$APP_NAME (Windows)"
-                applicationVersion = "0.1.0"
+                applicationVersion = donat.teledrive.APP_VERSION
             }
             val f = SimpleTelegramClientFactory().also { factory = it }
             val builder = f.builder(settings)
