@@ -1,52 +1,173 @@
 <p align="center">
-  <img src="docs/images/logo.png" alt="" width="180">
-</p>
-
-<h1 align="center">Donat TeleDrive</h1>
-
-<p align="center">
-  A personal cloud drive for Windows that keeps your files in your own private Telegram channel.<br>
-  It looks and works like a normal file manager — Telegram is only the storage behind it.
+  <img src="docs/images/hero.png" alt="Donat TeleDrive — your own private cloud drive, powered by your Telegram account">
 </p>
 
 <p align="center">
-  Windows 10/11 x64 · Kotlin + Compose Multiplatform · build from source
+  <b>A beautiful, recovery-first cloud drive for Windows that stores everything in your own private Telegram channel.</b><br>
+  It looks and feels like a premium file manager — Telegram is simply the vault behind it.
 </p>
 
-![Home](docs/images/home.png)
+<p align="center">
+  <img alt="Windows 10/11" src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?style=for-the-badge&logo=windows11&logoColor=white">
+  <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-2.4-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white">
+  <img alt="Compose Multiplatform" src="https://img.shields.io/badge/Compose-Multiplatform-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white">
+  <img alt="TDLib" src="https://img.shields.io/badge/Telegram-TDLib-26A5E4?style=for-the-badge&logo=telegram&logoColor=white">
+  <img alt="MIT License" src="https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge">
+</p>
 
-## Features
+<p align="center">
+  <a href="#-highlights">Highlights</a> ·
+  <a href="#-a-tour">Tour</a> ·
+  <a href="#-security--privacy">Security</a> ·
+  <a href="#-under-the-hood">Under the hood</a> ·
+  <a href="#-getting-started">Getting started</a> ·
+  <a href="#-faq">FAQ</a>
+</p>
 
-| Feature | Details |
+---
+
+## ✨ Highlights
+
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <h3>☁️ Storage you own</h3>
+      Files live in a private channel of <i>your</i> Telegram account. No third-party server, no subscription, no extra cloud account — and no storage plan to outgrow.
+    </td>
+    <td width="33%" valign="top">
+      <h3>🛡️ Recovery-first</h3>
+      The drive's index lives in Telegram too. New PC? Log in and every folder, name and version is back. Even with the index gone, files are found again.
+    </td>
+    <td width="33%" valign="top">
+      <h3>✅ Verified, never "maybe"</h3>
+      Every part is hashed with SHA-256. A file says <b>Saved</b> only when the cloud index lists it, and <b>Verified</b> after a byte-for-byte check.
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <h3>🚀 Transfers that don't quit</h3>
+      Parallel, resumable uploads and downloads that survive restarts, honour Telegram's rate limits and split big files into 512 MiB parts.
+    </td>
+    <td valign="top">
+      <h3>🎬 Preview everything</h3>
+      Photos with smooth zoom, PDF, text, ZIP contents, audio and video — even MKV, HEVC and FLAC, with a mini player that keeps the music going.
+    </td>
+    <td valign="top">
+      <h3>🎨 Crafted design</h3>
+      Material 3 with Android 16-style rounded surfaces, 11 hand-tuned themes, a phone-style layout for narrow windows and a native, theme-coloured title bar.
+    </td>
+  </tr>
+</table>
+
+---
+
+## 🧭 A tour
+
+### Home — your whole drive at a glance
+A live storage breakdown by type, folders as compact tiles, and large thumbnail cards with an honest status on every file (pictured at the top). Drag files or entire folders in from Explorer — or drop them straight onto a folder.
+
+### Gallery — a camera roll for your cloud
+Photos and videos grouped by the day they were taken, read from the file names your phone and camera already use.
+
+<p align="center"><img src="docs/images/gallery.png" alt="Gallery"></p>
+
+### Preview — instant, smooth, in-window
+Zoom at the cursor with the mouse wheel, pan by dragging, flip through files with ← →. Media plays inside the app; formats Windows can't play use a video engine fetched on demand — there is nothing to install.
+
+<p align="center"><img src="docs/images/preview.png" alt="Image preview"></p>
+
+### Transfers — always know what's happening
+Real progress from confirmed bytes, speed and time left, pause / resume / cancel per item or all at once, and a clear reason whenever something waits.
+
+<p align="center"><img src="docs/images/transfers.png" alt="Transfers"></p>
+
+### Search & details — find anything
+Details view with sortable columns, search with type, date and size filters, Favorites and Recent. Explorer-style selection with <kbd>Ctrl</kbd> / <kbd>Shift</kbd>, <kbd>F2</kbd> rename, <kbd>Del</kbd> to Trash and Undo.
+
+<p align="center"><img src="docs/images/files-details.png" alt="Files in details view"></p>
+
+### Insights — reclaim space
+The largest files and folders, and duplicate files detected by content (SHA-256) — keep one copy, send the rest to Trash in one click.
+
+<p align="center"><img src="docs/images/insights.png" alt="Storage insights"></p>
+
+### Eleven themes, one feel
+System, Daylight, Graphite, Ocean, AMOLED, Sepia, Forest, Sakura, Sunset, Lavender and Neon — every chart colour validated for contrast on every theme.
+
+<p align="center"><img src="docs/images/themes.png" alt="Daylight, Ocean, Sakura and Neon themes"></p>
+
+<p align="center"><img src="docs/images/settings.png" alt="Settings with the theme gallery"></p>
+
+### Made for any window size
+Below phone width the layout switches to a slide-out menu, list rows and a floating Upload button — tidy at every size, no wasted space.
+
+<p align="center"><img src="docs/images/phones.png" alt="Narrow window layout in Daylight and Forest" width="70%"></p>
+
+### Sign in your way
+Log in with a QR code from the Telegram app on your phone, or with your phone number (country picker included). Lock the app with a PIN if others share your PC.
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/login.png" alt="QR login"></td>
+    <td width="50%"><img src="docs/images/lock.png" alt="App lock"></td>
+  </tr>
+</table>
+
+---
+
+## 📋 Everything it does
+
+| Area | What you get |
 | --- | --- |
-| **Your storage, your account** | Files are uploaded to a private channel in *your* Telegram account. No third-party server, no extra cloud account. |
-| **Real file manager** | Folders, grid and details views, sorting, drag & drop from Explorer (files and whole folders), drag onto a folder to move, rename, multi-select with <kbd>Ctrl</kbd>/<kbd>Shift</kbd>, keyboard shortcuts, Undo after delete. |
-| **Find things** | Search with type, date and size filters; Favorites, Recent, a photo Gallery by date taken, and Insights (largest files, duplicates). |
-| **Safe transfers** | Uploads and downloads survive restarts, run in parallel, pause/resume, honour Telegram's rate limits, and split big files into 512 MiB parts. Every part is checked with SHA-256. A file only shows *Saved* once it is listed in the drive's index on Telegram, and *Verified* after a byte-for-byte check. |
-| **Recovery first** | The drive's index (folders, names, versions) lives in a hidden, archived Telegram channel. On a new PC you log in and everything is back. Even if that index is lost, the files are found again by name. |
-| **Several PCs** | Changes made on two PCs are merged; when both changed the same file, the newer one wins and the item is marked for review — nothing is silently overwritten. |
-| **Trash & versions** | Delete goes to Trash first. Uploading a file with the same name keeps the old one as a version you can restore. |
-| **Preview** | Images (zoom, pan), PDF, text, ZIP contents, audio and video. Common formats play in-app; MKV/HEVC/FLAC/WebM use a video engine that is downloaded on demand (nothing to install). Audio keeps playing in a mini player. |
-| **Security** | Telegram API credentials are encrypted with Windows DPAPI. Optional app PIN (salted PBKDF2, guessing brake that survives restarts). Integrity check on demand. |
-| **Local network** | Optional web page for phones and PCs on the same Wi-Fi (browse, stream, download, upload) and expiring share links with a QR code. Off by default. |
-| **Look** | Material 3 design with 11 themes (follows Windows light/dark by default), a phone-style layout for narrow windows, tray icon, Windows notifications, optional start with Windows, upload/download speed limits. |
+| **File manager** | Folders, grid & details views, sorting, drag & drop in (files and folders) and onto folders, move dialog, rename, multi-select, keyboard shortcuts, Undo after delete |
+| **Find** | Search with type / date / size filters and "only in this folder", Favorites, Recent, Gallery by date taken, Insights (largest, duplicates) |
+| **Transfers** | Durable queue in SQLite, 1–5 in parallel, part-level resume, pause / resume / cancel, global back-off on Telegram FLOOD_WAIT, upload & download speed limits |
+| **Integrity** | SHA-256 per part and per file, "Verify all files", corrupted parts detected and reported, dedup of identical content |
+| **Safety** | Trash with restore, versions when a same-name file is uploaded again, nothing is ever silently overwritten |
+| **Multi-PC** | Three-way merge of changes from several PCs; conflicting edits are kept and marked for review |
+| **Recovery** | Rebuild the local index from Telegram any time; restore every drive on a new PC; adopt files found in the channel that the drive doesn't list (e.g. sent from your phone) |
+| **Preview** | Images, PDF, text, ZIP listing, audio (mini player) and video (MP4/MOV in-app; MKV/HEVC/FLAC/AVI/WebM via an on-demand engine) |
+| **Local network** | Optional web page for phones and PCs on the same Wi-Fi (browse, stream, download, upload) and expiring share links with QR codes |
+| **Desktop** | Tray icon, Windows notifications, start with Windows, single instance, native dialogs, theme-coloured title bar, several drives per account |
 
-## Screenshots
+---
 
-| Details view | Narrow window, light theme |
-| --- | --- |
-| ![Files](docs/images/files-details.png) | ![Phone layout](docs/images/phone-light.png) |
+## 🔒 Security & privacy
 
-| Log in with a QR code or your phone number |
-| --- |
-| ![Login](docs/images/login.png) |
+- **Your credentials stay yours.** The Telegram API ID/hash are encrypted with Windows DPAPI; the session is stored only on your PC.
+- **Optional app PIN** — salted PBKDF2 (120 000 rounds), with a guessing brake that grows after every five misses and survives restarts.
+- **Hardened local-network server** — 128-bit random keys, constant-time key checks, strict validation of every folder and file id, HTML/SVG always delivered as downloads, `nosniff` + `no-referrer`, keys never written to logs.
+- **Safe file names** — names coming from Telegram are cleaned before they touch your disk, so a crafted name can never write outside the folder you chose.
+- **Pentested** — every hardening has a test that attacks it, and a mutation run (`tools/mutate.ps1`) proves each test fails when its fix is removed: 23 of 24 mutants killed (the survivor only changes timing).
+- **Not a chat client** — it never reads or shows your chats.
 
-## Getting started
+---
+
+## 🧠 Under the hood
+
+```mermaid
+flowchart LR
+    UI["Compose UI<br/>(Material 3)"] --> S["DriveService<br/>transfers · integrity · merge"]
+    S <--> DB[("SQLite index<br/>rebuildable cache")]
+    S --> P["StorageProvider"]
+    P --> T["TelegramProvider<br/>TDLib via tdlight-java"]
+    T --> C["Private drive channel<br/>file parts"]
+    T --> M["Archived data channel<br/>versioned manifest"]
+```
+
+- **Telegram = file content.** One private channel per drive; big files are split into parts.
+- **Manifest = source of truth.** A versioned JSON index in an archived companion channel, written in batches to stay far inside Telegram's rate limits.
+- **SQLite = cache.** Delete it any time — it is rebuilt from the manifest.
+- **Provider-neutral core.** Everything above `StorageProvider` knows nothing about Telegram.
+
+---
+
+## 🚀 Getting started
 
 **You need**
 - Windows 10 or 11 (x64)
-- JDK 21 (for example [Eclipse Temurin 21](https://adoptium.net/))
-- Your own Telegram **API ID** and **API hash**: log in at [my.telegram.org](https://my.telegram.org) → *API development tools* → create an app. They stay on your PC, encrypted.
+- JDK 21 — for example [Eclipse Temurin 21](https://adoptium.net/)
+- Your own Telegram **API ID** and **API hash** from [my.telegram.org](https://my.telegram.org) → *API development tools*
 
 **Run**
 ```bat
@@ -54,27 +175,65 @@ git clone https://github.com/abdani/Donat-TeleDrive.git
 cd Donat-TeleDrive
 run.bat
 ```
-`run.bat` builds the app (first time takes a few minutes) and starts it. Enter your API ID and hash, then log in with a QR code from the Telegram app on your phone, or with your phone number. Create a drive — or, if you used Donat TeleDrive before, your drives are found automatically.
+`run.bat` builds the app (the first build takes a few minutes) and starts it. Enter your API ID and hash, then sign in with a QR code or your phone number. Create a drive — or, if you have used Donat TeleDrive before, your drives appear automatically.
 
 **Tests**
 ```bat
 gradlew.bat jvmTest
 ```
-Unit tests use their own data folder (`build/test-appdata`) and never touch the app's real data or your Telegram account.
+Unit tests run in their own data folder (`build/test-appdata`) and never touch your real data or your Telegram account.
 
-## How it works
+<details>
+<summary>Developer tools</summary>
 
-- **Telegram = file content.** Each drive is one private channel; files are sent as documents (big files in parts).
-- **Drive index = source of truth.** A versioned JSON manifest in an archived companion channel holds folders, names, safety states and part references. It is written in batches to stay well inside Telegram's rate limits.
-- **SQLite = cache.** The local database (`%LOCALAPPDATA%\Donat TeleDrive\index.db`) can be deleted at any time and is rebuilt from the index.
-- Telegram is reached through [TDLib](https://github.com/tdlib/td) via [tdlight-java](https://github.com/tdlight-team/tdlight-java). The app is not a chat client: it never reads or shows your chats.
+| Script | Purpose |
+| --- | --- |
+| `tools/mutate.ps1` | Mutation test of every security fix |
+| `tools/capture.ps1` + `tools/showcase.py` | README screenshots from the demo UI (`gradlew jvmTest --tests donat.teledrive.UiDemoTest -PuiDemo=true`) |
+| `tools/logo.py` | Pre-renders the logo and icons at exact pixel sizes |
+| `tools/drag.ps1` | Measures repaint artifacts while resizing the window |
 
-## Privacy & security notes
+</details>
 
-- Nothing leaves your PC except the traffic to Telegram (and, if you turn it on, the local-network page on your Wi-Fi).
-- The local-network page and share links are protected by long random keys; pages and scripts are never executed from it (HTML/SVG files are always downloaded).
-- File names coming from Telegram are cleaned before they touch the disk, so a crafted name can't write outside the chosen folder.
-- Logs (`%LOCALAPPDATA%\Donat TeleDrive\app.log`) never contain your API hash, phone number, codes, passwords or link keys.
+---
+
+## ❓ FAQ
+
+<details>
+<summary><b>Is there a storage limit?</b></summary>
+
+Telegram doesn't limit the total size of a channel. Single Telegram files are limited, so Donat TeleDrive splits big files into 512 MiB parts and joins them again on download.
+</details>
+
+<details>
+<summary><b>What happens if I lose my PC?</b></summary>
+
+Install Donat TeleDrive on another PC and log in with the same Telegram account: your drives, folders and file names come back from the index stored in Telegram. Files are downloaded only when you open them.
+</details>
+
+<details>
+<summary><b>Are my files encrypted?</b></summary>
+
+They are stored in a private channel only your account can see, and travel over Telegram's encrypted connection. End-to-end encryption with your own passphrase (AES-256-GCM) is on the roadmap.
+</details>
+
+<details>
+<summary><b>Can I see the files on my phone?</b></summary>
+
+Yes — the drive is a normal private channel in your Telegram app, showing just your files. Photos or videos you send there from your phone can be added to the drive with "Check for unlisted files".
+</details>
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] End-to-end encryption with a recovery passphrase
+- [ ] Automatic backup of Windows folders
+- [ ] Windows Hello unlock
+- [ ] Share links that work outside your home network
+- [ ] Android and web versions
+
+---
 
 ## Third-party software
 

@@ -123,6 +123,10 @@ Single Gradle module at repo root (Kotlin 2.4.21, Compose MP 1.12.2, Material3 1
 - Logo v3 from `docs/images/logo.png` (567×378 transparent, wide): `tools/logo.py` → `logo-144/180/216/252/288.png` (144×96 dp header, named by px width, 3% margin) + `icon-16…256.png` (square, 1% margin), premultiplied Lanczos, optimized PNG. `LogoHeader` draws 144×96 dp 1:1, no shift.
 - Resize bug: while the window grows Windows painted the new strip with AWT's #F0F0F0 before Compose's next frame → `window.background`/`contentPane.background` = theme `surfaceContainer` (Main.kt). Title bar caption = `surfaceContainer` too (matches the backdrop). Measured with `tools/drag.ps1` (mouse-drags the right edge, counts light pixels): 3800/20000 before, 0 after.
 
+## README showcase (2026-11-14)
+- Active screen lives in `AppModel.screen` (reset to Home when a drive opens) so the UI demo can switch screens. `UiDemoTest` = rich demo drive (synthetic landscape JPEGs, running/queued/paused transfers, duplicates, trash); signals also `screen:<Screen>`, `preview:<file id>`, `auth:qr`, `view:grid|details`. Demo transfers are inserted only after AppModel's own runner is stopped (`addDrive()`), or it marks them failed with local paths.
+- README art: `tools/capture.ps1` (raw shots → tools/raw, ignored) → `tools/showcase.py` (framed windows with drawn title bar + shadow on the brand gradient, `hero.png`, `themes.png`, `phones.png` in docs/images).
+
 ## Backlog (not done)
 - Windows folder backup rules (blueprint Phase 3) — then re-show the Backup menu.
 - Encryption + recovery passphrase (Phase 4).

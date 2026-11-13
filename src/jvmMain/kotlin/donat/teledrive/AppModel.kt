@@ -69,6 +69,8 @@ class AppModel(val db: AppDatabase, private val scope: CoroutineScope) {
     private var creds: Pair<Int, String>? = Secrets.load()
     /** The PIN guards a logged-in account. No account on this PC (logged out) = no PIN: a stale one is dropped. */
     val locked = MutableStateFlow(AppLock.isSet() && creds != null).also { if (creds == null) AppLock.set(null) }
+    /** Screen shown in the main shell; every drive opens on Home. */
+    val screen = androidx.compose.runtime.mutableStateOf(donat.teledrive.ui.Screen.Home)
     val homePath = androidx.compose.runtime.mutableStateOf(listOf<Folder>())
     val filesPath = androidx.compose.runtime.mutableStateOf(listOf<Folder>())
 
@@ -269,6 +271,7 @@ class AppModel(val db: AppDatabase, private val scope: CoroutineScope) {
 
     private fun open(drive: Drive): DriveService {
         Prefs["lastDrive"] = drive.id // the drive id comes from the manifest, so it stays the same after log out + restore
+        screen.value = donat.teledrive.ui.Screen.Home
         transfersJob?.cancel()
         val s = DriveService(db, provider(drive.remoteId.toLong()), drive, appDataDir)
         service.value = s

@@ -11,6 +11,7 @@ local.properties
 
 # Output of the scripts in tools/
 tools/*.png
+tools/raw/
 tools/mutation-results.txt
 
 # Private planning documents (kept out of the repository)

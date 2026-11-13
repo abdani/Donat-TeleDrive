@@ -341,7 +341,7 @@ private fun DriveSetupScreen(model: AppModel) {
 
 @Composable
 private fun MainShell(model: AppModel, service: DriveService, userName: String) {
-    var screen by remember { mutableStateOf(Screen.Home) }
+    var screen by model.screen
     val transfers by remember(service) { model.db.dao().transfers(service.drive.id) }.collectAsState(emptyList())
     val active = transfers.count { !it.state.isTerminal && it.state != donat.teledrive.core.TransferState.FAILED }
     val failed = transfers.count { it.state == donat.teledrive.core.TransferState.FAILED }
