@@ -257,9 +257,24 @@ Yes — the drive is a normal private channel in your Telegram app, showing just
 
 ---
 
-## Third-party software
+## 🧱 Built with
 
-Compose Multiplatform, Room/SQLite and kotlinx (Apache-2.0), TDLib (BSL-1.0), tdlight-java (LGPL-3.0), JavaFX (GPL-2.0 with Classpath Exception), Apache PDFBox (Apache-2.0), LWJGL (BSD-3-Clause), JNA (Apache-2.0), QR Code generator by Project Nayuki (MIT), vlcj (GPL-3.0). VLC is downloaded from videolan.org only when a format needs it. Note that vlcj is GPL-3.0: a binary distribution that includes it must follow that license.
+| Component | Purpose | License |
+| --- | --- | --- |
+| [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) + [Compose Multiplatform](https://www.jetbrains.com/compose-multiplatform/) (Material 3) | The app and its whole interface | Apache-2.0 |
+| [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines), [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) | Background transfers, the JSON drive manifest | Apache-2.0 |
+| [Room](https://developer.android.com/jetpack/androidx/releases/room) + [SQLite](https://sqlite.org) (bundled) | Local index of the drive (a rebuildable cache) | Apache-2.0, public domain |
+| [TDLib](https://github.com/tdlib/td) via [tdlight-java](https://github.com/tdlight-team/tdlight-java) | Telegram login, channels, uploads and downloads | BSL-1.0, LGPL-3.0 |
+| [JavaFX](https://openjfx.io) | In-app audio and video player (MP4, MP3, M4A, WAV) | GPL-2.0 with Classpath Exception |
+| [vlcj](https://github.com/caprica/vlcj) + [VLC](https://www.videolan.org) *(downloaded only when needed)* | Playback of MKV, HEVC, FLAC, AVI and WebM | GPL-3.0, LGPL-2.1+ |
+| [Apache PDFBox](https://pdfbox.apache.org) | PDF preview | Apache-2.0 |
+| [LWJGL](https://www.lwjgl.org) + Native File Dialog | Modern Windows file and folder dialogs | BSD-3-Clause, zlib |
+| [JNA](https://github.com/java-native-access/jna) | Windows DPAPI (encrypted login), colored title bar | Apache-2.0 / LGPL-2.1 |
+| [QR Code generator](https://www.nayuki.io/page/qr-code-generator-library) by Project Nayuki | QR code login | MIT |
+| [SLF4J](https://www.slf4j.org) (no-op) | Keeps TDLib's library logs out of the app | MIT |
+| [Eclipse Temurin](https://adoptium.net) 21 | Java runtime bundled in the installer and the zips | GPL-2.0 with Classpath Exception |
+
+VLC is downloaded from videolan.org (checksum-verified) only when a format needs it. Note that vlcj is GPL-3.0: a binary distribution that includes it must follow that license.
 
 Donat TeleDrive is an independent project and is not affiliated with Telegram.
 
